@@ -8,11 +8,12 @@ export default function Home() {
 
   return (
     <main>
-      <div className="bg-stone-500 min-h-screen">
-        <h1 className="bg-linear-to-r from-stone-900 to-stone-950 border-gray-300 border-2 
-        font-mono justify-center text-center p-4">
-        CPRG 306: Web Development 2 - Assignments
+      <div className="bg-slate-900 min-h-screen">
+        <header className="bg-linear-to-r from-rose-900 to-rose-950 border-2 border-rose-300">
+          <h1 className="text-center p-4">
+          CPRG 306: Web Development 2 - Assignments
         </h1>
+        </header>
         <div className='justify-center text-center'>
           <DropdownMenu
             label="Week 2"

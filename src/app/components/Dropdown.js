@@ -9,7 +9,7 @@ export default function DropdownMenu({ label, items }) {
     <div className="relative inline-block justify-centertext-center p-2">
       <button
         onClick={() => setOpen(!open)}
-        className='px-15 py-2 bg-linear-to-r from-stone-900 to-stone-950 border-gray-300 border-2 
+        className='px-15 py-2 bg-linear-to-r from-rose-900 to-rose-950 border-2 border-rose-300
           hover:bg-black font-mono justify-center text-center'
       >
         {label}
