@@ -4,22 +4,14 @@ import NewItem from "./new-item";
 
 export default function Page() {
   return (
-    <main>
-      <header>
-        <h1>New Item Page</h1>
+    <main className="bg-slate-900 min-h-screen">
+      <header className="bg-linear-to-r from-rose-900 to-rose-950 border-2 border-rose-300">
+        <h1 className="font-mono text-center p-4">
+          New Item Page
+        </h1>
       </header>
       <div>
-        <h2>
-          Add or Remove Item
-        </h2>
-        //increment button
-        <button onCLick={() => {
-          increment();
-          }}></button>
-        //decrement button
-        <button onClick={() => {
-          decrement();
-        }}></button>
+        <NewItem />
       </div>
     </main>
   );
