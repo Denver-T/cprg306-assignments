@@ -10,7 +10,7 @@ export default function Page() {
           New Item Page
         </h1>
       </header>
-      <div>
+      <div className="flex justify-center">
         <NewItem />
       </div>
     </main>

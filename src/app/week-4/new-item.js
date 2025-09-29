@@ -5,13 +5,17 @@ export default function NewItem() {
   const [quantity, setQuantity] = useState(1);
   
 function increment() {
-    setQuantity(quantity + 1);
+  if(quantity < 20) {
+      setQuantity(quantity + 1);
+    }
   }
 
 
   //decrease quantity by 1
   function decrement() {
-    setQuantity(quantity -1 );
+    if(quantity > 1) {
+      setQuantity(quantity - 1);
+    }
   }
 
   //function to reset counter to orignal value
@@ -20,7 +24,7 @@ function increment() {
   // }
 
   return (
-    <div className=" m-2 w-65 bg-linear-to-r from-rose-900 to-rose-950 border-2 border-rose-300 text-center rounded-lg">
+    <div className="m-2 w-65 bg-linear-to-r from-rose-900 to-rose-950 border-2 border-rose-300 text-center rounded-lg">
     <h1 className="font-mono">Add or Remove Item</h1>
     <h2 className="font-mono m-2"> Quantity: {quantity}</h2>
 
