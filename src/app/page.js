@@ -14,6 +14,10 @@ export default function Home() {
       { label: "> New Item", href: "/week-4"}
     ]
 
+    const link4 = [
+      { label: "> New Item", href: "/week-5"}
+    ]
+
   return (
     <main className="bg-slate-900 min-h-screen">
         <header className="bg-linear-to-r from-rose-900 to-rose-950 border-2 border-rose-300">
@@ -33,6 +37,10 @@ export default function Home() {
           <DropdownMenu
             label="Week 4"
             items={link3}
+          />
+          <DropdownMenu
+          label="Week 5"
+          items={link4}
           />
       </div>
     </main>
