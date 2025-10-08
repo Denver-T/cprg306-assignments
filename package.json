@@ -7,7 +7,7 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write 'app/**/*.{js,jsx,ts,tsx,css,html}’"
+    "format": "prettier --write 'src/app/**/*.{js,jsx,ts,tsx,css,html}'"
   },
   "dependencies": {
     "next": "15.5.3",
