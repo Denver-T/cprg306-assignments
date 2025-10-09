@@ -22,7 +22,7 @@ export default function NewItem() {
     console.log('item sumbitted!', item);
     //alert with current state
     alert(
-      'Item sumbitted:\n' +
+      'Item Added to Cart\n' +
         `Item: ${item.name}\n` +
         `Quantity: ${item.quantity}\n` +
         `Category: ${item.category}`
@@ -51,7 +51,7 @@ export default function NewItem() {
 
   //return values
   return (
-    <div className="m-4 flex-col rounded-lg border-2 border-rose-300 bg-linear-to-r from-rose-900 to-rose-950 text-center">
+    <div className="m-4 flex-col items-start rounded-lg border-2 border-rose-300 bg-linear-to-r from-rose-900 to-rose-950 p-4">
       <form onSubmit={handleSubmit}>
         {/* Item Name Field */}
         <section className="font-mono">
@@ -68,23 +68,25 @@ export default function NewItem() {
 
         {/* Quantity field */}
         <section>
-          <h3 className="m-2 font-mono"> Quantity: {quantity}</h3>
+          Quantity: {quantity}
           {/* Increment */}
           <button
-            className="m-2 rounded-lg border-1 bg-slate-900 px-4 py-2 hover:border-1 hover:border-black hover:bg-white hover:text-black"
+            className="m-2 h-8 w-8 rounded-md border-1 bg-slate-900 hover:border-1 hover:border-black hover:bg-white hover:text-black"
+            type="button"
             onClick={increment}
           >
             +
           </button>
           {/* Decrement */}
           <button
-            className="m-2 rounded-lg border-1 bg-slate-900 px-4 py-2 hover:border-1 hover:border-black hover:bg-white hover:text-black"
+            className="m-2 h-8 w-8 rounded-md border-1 bg-slate-900 hover:border-1 hover:border-black hover:bg-white hover:text-black"
+            type="button"
             onClick={decrement}
           >
             -
           </button>
         </section>
-        <text className="m-2 font-mono">Available from 1 - 20</text>
+        <text className="text-xs">(Available from 1 - 20)</text>
 
         {/* Category field */}
         <section className="font-mono">
@@ -109,7 +111,13 @@ export default function NewItem() {
         </section>
 
         {/* Sumbit Button */}
-        <button type="sumbit"> Submit </button>
+        <button
+          className="m-2 mx-auto block rounded-lg border-1 bg-slate-900 px-4 py-2 hover:border-1 hover:border-black hover:bg-white hover:text-black"
+          type="sumbit"
+        >
+          {' '}
+          Submit{' '}
+        </button>
       </form>
     </div>
   );
