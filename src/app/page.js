@@ -1,4 +1,5 @@
 import DropdownMenu from './components/Dropdown';
+import Header from './components/header';
 
 export default function Home() {
   //constants for links to seperate pages can be added through reusable drop down menu
@@ -10,15 +11,14 @@ export default function Home() {
 
   const link4 = [{ label: '> New Item', href: '/week-5' }];
 
-  const link5 = [{ label: '> Shopping list', href: '/week-6'}];
+  const link5 = [{ label: '> Shopping list', href: '/week-6' }];
 
   return (
     <main className="min-h-screen bg-slate-900">
-      <header className="border-2 border-rose-300 bg-linear-to-r from-rose-900 to-rose-950">
-        <h1 className="p-4 text-center font-mono">
-          CPRG 306: Web Development 2 - Assignments
-        </h1>
-      </header>
+      <Header />
+      <h1 className="p-4 text-center font-mono">
+        CPRG 306: Web Development 2 - Assignments
+      </h1>
       <div className="text-center">
         <DropdownMenu label="Week 2" items={link1} />
         <DropdownMenu label="Week 3" items={link2} />
