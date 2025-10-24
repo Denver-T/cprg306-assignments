@@ -13,6 +13,8 @@ export default function Home() {
 
   const link5 = [{ label: '> Shopping list', href: '/week-6' }];
 
+  const link6 = [{ label: '> Managing State', href: '/week-7' }];
+
   return (
     <main className="min-h-screen bg-slate-900">
       <Header />
@@ -25,6 +27,7 @@ export default function Home() {
         <DropdownMenu label="Week 4" items={link3} />
         <DropdownMenu label="Week 5" items={link4} />
         <DropdownMenu label="Week 6" items={link5} />
+        <DropdownMenu label="Week 7" items={link6} />
       </div>
     </main>
   );
