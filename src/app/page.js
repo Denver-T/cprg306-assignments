@@ -2,32 +2,30 @@ import DropdownMenu from './components/Dropdown';
 import Header from './components/header';
 
 export default function Home() {
-  //constants for links to seperate pages can be added through reusable drop down menu
-  const link1 = [{ label: '> Shopping List', href: '/week-2' }];
-
-  const link2 = [{ label: '> Item List', href: '/week-3' }];
-
-  const link3 = [{ label: '> New Item', href: '/week-4' }];
-
-  const link4 = [{ label: '> New Item', href: '/week-5' }];
-
-  const link5 = [{ label: '> Shopping list', href: '/week-6' }];
-
-  const link6 = [{ label: '> Managing State', href: '/week-7' }];
+  const links = [
+    { label: '> Shopping List', href: '/week-2' },
+    { label: '> Item List', href: '/week-3' },
+    { label: '> New Item', href: '/week-4' },
+    { label: '> New Item', href: '/week-5' },
+    { label: '> Shopping List', href: '/week-6' },
+    { label: '> Managing State', href: '/week-7' },
+    { label: '> Fetching Data', href: '/week-8' },
+  ];
 
   return (
-    <main className="min-h-screen bg-slate-900">
+    <main className="flex min-h-screen flex-col bg-slate-900 text-white">
       <Header />
-      <h1 className="p-4 text-center font-mono">
-        CPRG 306: Web Development 2 - Assignments
-      </h1>
-      <div className="text-center">
-        <DropdownMenu label="Week 2" items={link1} />
-        <DropdownMenu label="Week 3" items={link2} />
-        <DropdownMenu label="Week 4" items={link3} />
-        <DropdownMenu label="Week 5" items={link4} />
-        <DropdownMenu label="Week 6" items={link5} />
-        <DropdownMenu label="Week 7" items={link6} />
+      <div className="flex flex-grow flex-col items-center justify-center p-6">
+        <h1 className="mb-8 text-center font-mono text-2xl font-semibold text-white">
+          CPRG 306: Web Development 2 - Assignments
+        </h1>
+
+        {/* Dropdowns Container */}
+        <div className="flex flex-wrap justify-center gap-4">
+          {links.map((link, i) => (
+            <DropdownMenu key={i} label={`Week ${i + 2}`} items={[link]} />
+          ))}
+        </div>
       </div>
     </main>
   );
