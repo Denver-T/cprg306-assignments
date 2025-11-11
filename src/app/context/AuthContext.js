@@ -1,18 +1,19 @@
-"use client";
+'use client';
 
-import { useContext, createContext, useState, useEffect } from "react";
+import { useContext, createContext, useState, useEffect } from 'react';
 import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
   GithubAuthProvider,
-} from "firebase/auth";
-import { auth } from "./firebase";
+} from 'firebase/auth';
+import { auth } from '../utils/firebase';
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const gitHubSignIn = () => {
     const provider = new GithubAuthProvider();
@@ -26,17 +27,26 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoading(false);
     });
     return () => unsubscribe();
   }, [user]);
 
   return (
-    <AuthContext.Provider value={{ user, gitHubSignIn, firebaseSignOut }}>
+    <AuthContext.Provider
+      value={{ user, loading, gitHubSignIn, firebaseSignOut }}
+    >
       {children}
     </AuthContext.Provider>
   );
 };
 
 export const useUserAuth = () => {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+
+  if (context == undefined) {
+    throw new Error('useAuth must be used within an Auth Provider');
+  }
+
+  return context;
 };

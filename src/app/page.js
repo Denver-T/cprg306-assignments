@@ -10,6 +10,7 @@ export default function Home() {
     { label: '> Shopping List', href: '/week-6' },
     { label: '> Managing State', href: '/week-7' },
     { label: '> Fetching Data', href: '/week-8' },
+    { label: '> Firebase Auth', href: '/week-9' },
   ];
 
   return (
