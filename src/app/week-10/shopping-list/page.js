@@ -14,18 +14,22 @@ import { getItems, addItem } from '../services/shopping-list-service';
 export default function Page() {
   const { user } = useUserAuth();
   const router = useRouter();
+
+  // MISSING STATE (added back)
+  const [items, setItems] = useState([]);
+
   const [selectedItemName, setSelectedItemName] = useState('');
 
+  // Redirect to Week 9 login if not logged in
   useEffect(() => {
     if (!user) {
-      router.push('/week-10');
+      router.push('/week-9');
     }
   }, [user, router]);
 
-  // Load shopping list from Firestore
+  // Load list from Firestore
   const loadItems = async () => {
     if (!user) return;
-
     try {
       const list = await getItems(user.uid);
       setItems(list);
@@ -34,7 +38,6 @@ export default function Page() {
     }
   };
 
-  // Call loadItems when the user object becomes available
   useEffect(() => {
     loadItems();
   }, [user]);
@@ -52,7 +55,6 @@ export default function Page() {
     try {
       const id = await addItem(user.uid, newItem);
       const newItemWithId = { id, ...newItem };
-
       setItems((prev) => [...prev, newItemWithId]);
     } catch (error) {
       console.error('Failed to add item:', error);
