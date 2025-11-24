@@ -11,6 +11,7 @@ export default function Home() {
     { label: '> Managing State', href: '/week-7' },
     { label: '> Fetching Data', href: '/week-8' },
     { label: '> Firebase Auth', href: '/week-9' },
+    { label: '> Firebase Store', href: '/week-10' },
   ];
 
   return (
