@@ -7,21 +7,37 @@ import { useUserAuth } from '../../context/AuthContext';
 import ItemList from './item-list';
 import Header from '../../components/header';
 import NewItem from './new-item';
-import ItemData from './items.json';
 import MealIdeas from './meal-ideas';
+
+import { getItems, addItem } from '../services/shopping-list-service';
 
 export default function Page() {
   const { user } = useUserAuth();
   const router = useRouter();
-
-  const [items, setItems] = useState(ItemData);
   const [selectedItemName, setSelectedItemName] = useState('');
 
   useEffect(() => {
     if (!user) {
-      router.push('/week-9');
+      router.push('/week-10');
     }
   }, [user, router]);
+
+  // Load shopping list from Firestore
+  const loadItems = async () => {
+    if (!user) return;
+
+    try {
+      const list = await getItems(user.uid);
+      setItems(list);
+    } catch (error) {
+      console.error('Failed to load items:', error);
+    }
+  };
+
+  // Call loadItems when the user object becomes available
+  useEffect(() => {
+    loadItems();
+  }, [user]);
 
   if (!user) {
     return (
@@ -31,10 +47,16 @@ export default function Page() {
     );
   }
 
-  function handleAddItem(newItem) {
-    setItems((prevItems) => {
-      return [...prevItems, newItem];
-    });
+  async function handleAddItem(newItem) {
+    if (!user) return;
+    try {
+      const id = await addItem(user.uid, newItem);
+      const newItemWithId = { id, ...newItem };
+
+      setItems((prev) => [...prev, newItemWithId]);
+    } catch (error) {
+      console.error('Failed to add item:', error);
+    }
   }
 
   function handleItemSelect(item) {
